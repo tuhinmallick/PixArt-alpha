@@ -68,8 +68,7 @@ def extract_img_vae():
         if image_name in image_names:
             continue
         image_names.add(image_name)
-    lines = list(image_names)
-    lines.sort()
+    lines = sorted(image_names)
     lines = lines[args.start_index: args.end_index]
 
     transform = T.Compose([
@@ -113,7 +112,7 @@ if __name__ == '__main__':
     args = get_args()
     device = "cuda" if torch.cuda.is_available() else "cpu"
     image_resize = 512
-    print('Extracting Image Resolution %s' % image_resize)
+    print(f'Extracting Image Resolution {image_resize}')
 
     # prepare extracted caption t5 features for training
     extract_caption_t5()
